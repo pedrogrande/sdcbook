@@ -1,3 +1,22 @@
-<h3>User</h3>
-<p>User: <%= @user.name %></p>
-<p>Email: <%= @user.email if @user.email %></p>
+<% if current_user == @user %>
+	<h3>My profile</h3>
+<% else %>
+	<h3><%= @user.name %>'s Profile</h3>
+<% end %>
+
+<p>
+  <b>About me:</b><br>
+  <%= @user.profile.about %>
+</p>
+
+<p>
+  <b>My hobbies:</b><br>
+  <%= @user.profile.hobbies %>
+</p>
+
+<p>
+  <b>Star sign:</b><br>
+  <%= @user.profile.star_sign %>
+</p>
+<p><b>Email:</b><br>
+ <%= @user.email if @user.email %></p>

@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @profile.user.name %>'s profile</h1>
+<%= image_tag(@profile.avatar_url) if @profile.avatar? %>
 <p>
   <b>About me:</b>
   <%= @profile.about %>

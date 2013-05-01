@@ -1,7 +1,27 @@
+<% if user_signed_in? %>
+<% if current_user.profile %>
+	<h1>My profile</h1>
+	<p>
+	  <b>About me:</b><br>
+	  <%= current_user.profile.about %>
+	</p>
+
+	<p>
+	  <b>My hobbies:</b><br>
+	  <%= current_user.profile.hobbies %>
+	</p>
+
+	<p>
+	  <b>Star sign:</b><br>
+	  <%= current_user.profile.star_sign %>
+	</p>
+<% end %>
+<% end %>
+
 <h3>Users</h3>
 <% @users.each do |user| %>
   <p><% if user.profile %>
-  		<%=link_to user.name, profile_path(user.profile) %>
+  		<%=link_to user.name, user_path(user) %>
   	<% else %>
   		<%= user.name %>
   	<% end %></p>
