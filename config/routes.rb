@@ -1,4 +1,7 @@
 Sdcbook::Application.routes.draw do
+  resources :profiles
+
+
   authenticated :user do
     root :to => 'home#index'
   end
