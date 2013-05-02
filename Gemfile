@@ -21,3 +21,4 @@ gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
 gem "friendly_id"
 gem "carrierwave"
 gem "fog", "~> 1.3.1"
+gem 'acts_as_votable'

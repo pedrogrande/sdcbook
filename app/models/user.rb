@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   has_many :groups, :through => :user_groups
   has_many :status_updates
 
+  acts_as_voter
+
   # testing to see if user is in a group
   def is_member?(group)
     self.groups.include?(group)

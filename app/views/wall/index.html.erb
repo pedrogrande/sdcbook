@@ -24,6 +24,9 @@
 				<div class="span4">
 					<p><%= status.content %></p>
 					<br>
+					<%= link_to 'Like', upvote_status_update_path(status), :method => :post, :class => 'btn' %>
+					<br>
+					Likes: <%= status.votes.size %>
 					<hr>
 				</div>
 			</div>

@@ -1,4 +1,10 @@
 class StatusUpdatesController < ApplicationController
+  def upvote
+    @status_update = StatusUpdate.find(params[:id])
+    @status_update.liked_by current_user
+    redirect_to root_path
+  end
+
   # GET /status_updates
   # GET /status_updates.json
   def index
