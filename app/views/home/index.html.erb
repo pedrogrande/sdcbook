@@ -33,4 +33,17 @@
 	<% end %>
 <% end %>
 
+<% if user_signed_in? %>
+	<%= link_to 'Create group', new_group_path, :class => 'btn btn-primary' %>
+<% end %>
+
+<div class="well">
+	<h2>Groups</h2>
+	<ul>
+		<% @groups.each do |group| %>
+		<li><%= link_to group.name, group %></li>
+		<% end %>
+	</ul>
+</div>
+
 

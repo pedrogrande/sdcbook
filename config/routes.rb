@@ -1,9 +1,20 @@
 Sdcbook::Application.routes.draw do
+  
+
+  resources :status_updates
+
+
+  resources :groups do
+  	member do
+  		post :join
+  		post :leave
+  	end
+  end
+
   resources :profiles
 
-
   authenticated :user do
-    root :to => 'home#index'
+    root :to => "wall#index"
   end
   root :to => "home#index"
   devise_for :users
