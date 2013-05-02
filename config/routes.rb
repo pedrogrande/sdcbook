@@ -1,9 +1,10 @@
 Sdcbook::Application.routes.draw do
   
 
-  resources :status_updates, :except => [:index, :destroy] do
+  resources :status_updates do
     member do
       post :upvote
+      post :downvote
     end
   end
 

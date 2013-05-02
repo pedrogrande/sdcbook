@@ -1,8 +1,15 @@
 class StatusUpdatesController < ApplicationController
+  
   def upvote
     @status_update = StatusUpdate.find(params[:id])
     @status_update.liked_by current_user
-    redirect_to root_path
+    redirect_to :back
+  end
+
+  def downvote
+    @status_update = StatusUpdate.find(params[:id])
+    @status_update.disliked_by current_user
+    redirect_to :back
   end
 
   # GET /status_updates
