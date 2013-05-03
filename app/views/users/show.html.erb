@@ -4,6 +4,27 @@
 	<h3><%= @user.name %>'s Profile</h3>
 <% end %>
 <%= image_tag(@user.profile.avatar_url, :class => 'profile-image') if @user.profile.avatar?  %>
+
+<h3>Following</h3>
+
+<p><%= @user.name %> is following <strong id="following"><%= @user.followed_users.count %></strong> people!</p>
+
+<h3>Followed by</h3>
+<p>and is followed by <strong id="followers"><%= @user.followers.count %></strong> people.</p>
+
+<br>
+
+<% if user_signed_in? %>
+	<% if current_user != @user %>
+		<div id="follow_form">
+			<% if current_user.following?(@user) %>
+				<%= render 'unfollow' %>
+			<% else %>
+				<%= render 'follow' %>
+			<% end %>
+		</div>
+	<% end %>
+<% end %>
 <p>
   <b>About me:</b><br>
   <%= @user.profile.about %>
@@ -36,3 +57,13 @@
  <% end %>
  </table>
  <% end %>
+
+
+
+
+
+
+
+
+
+

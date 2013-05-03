@@ -1,0 +1,22 @@
+<div class="status_update">	
+	<div class="row">
+		<div class="span4">
+			<%= image_tag(get_user_profile_image(status_update.user).avatar_url, :class => 'status-image') %>
+			<b><small>Shared by: <%= status_update.user.name %> <br>at <%= status_update.created_at.strftime("%I:%M:%P on %A, %e %b %Y") %></small></b>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span4">
+			<p><%= status_update.content %></p>
+			<br>
+			<% if !current_user.liked?(status_update) %>
+			<%= link_to 'Like', upvote_status_update_path(status_update), :method => :post, :class => 'btn' %>
+			<% else %>
+			<%= link_to 'Unlike', downvote_status_update_path(status_update), :method => :post, :class => 'btn' %>
+			<% end %>
+			<br>
+			Likes: <%= status_update.likes.size %>
+			<hr>
+		</div>
+	</div>
+</div>

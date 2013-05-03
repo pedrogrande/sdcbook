@@ -1,5 +1,6 @@
 class StatusUpdatesController < ApplicationController
-  
+  respond_to :html, :js
+
   def upvote
     @status_update = StatusUpdate.find(params[:id])
     @status_update.liked_by current_user
@@ -56,16 +57,9 @@ class StatusUpdatesController < ApplicationController
     @status_update = StatusUpdate.new(params[:status_update])
     @status_update.user = current_user
 
-    respond_to do |format|
-      if @status_update.save
-        format.html { redirect_to root_path, notice: 'Status update was successfully created.' }
-        format.js
-        format.json { render json: @status_update, status: :created, location: @status_update }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @status_update.errors, status: :unprocessable_entity }
-      end
-    end
+    @status_update.save
+    
+    respond_with @status_update, :location => root_path
   end
 
   # PUT /status_updates/1

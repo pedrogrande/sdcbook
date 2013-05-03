@@ -1,0 +1,7 @@
+$('<%= escape_javascript(render(:partial => @status_update))%>')
+  .appendTo('#status_updates')
+  .hide()
+  .fadeIn()
+ 
+$('#new_status_update')[0].reset()
+ 
