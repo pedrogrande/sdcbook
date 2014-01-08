@@ -1,8 +1,8 @@
 CarrierWave.configure do |config|
   config.fog_credentials = {
     :provider               => 'AWS',       # required
-    :aws_access_key_id      => 'AKIAID5WZI4VPEXP5APQ',       # required
-    :aws_secret_access_key  => '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',       # required
+    :aws_access_key_id      => ENV['AWS_ACCESS_KEY'],       # required
+    :aws_secret_access_key  => ENV['AWS_SECRET_KEY'],       # required
     :region                 => 'us-east-1'  # optional, defaults to 'us-east-1'
   }
   config.fog_directory  = 'sdcbook/avatarimages/development'                     # required
